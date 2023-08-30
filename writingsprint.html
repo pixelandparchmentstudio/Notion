@@ -67,13 +67,14 @@
 <body>
 	<div class="timer">
         <div class="button-container">
-            <button id="short-break">Short Break</button>
+            <button id="pomodoro">Short Writing Sprint</button>
+	    <button id="sprint">Long Writing Sprint</button>
+	    <button id="short-break">Short Break</button>
             <button id="long-break">Long Break</button>
         </div>
 		<h1>20:00</h1>
 		<button id="start">Start</button>
-		<button id="pomodoro">Short Writing Sprint</button>
-		<button id="reset">Long Writing Sprint</button>
+		<button id="reset">Reset</button>
         <div class="volume-control">
             <label for="volume">Volume:</label>
             <input type="range" id="volume" name="volume" min="0" max="1" step="0.1" value="0.5">
@@ -88,6 +89,7 @@
 		const startButton = document.querySelector('#start');
 		const resetButton = document.querySelector('#reset');
 		const pomodoroButton = document.querySelector('#pomodoro');
+		const sprintButton = document.querySelector('#sprint');
 		const shortBreakButton = document.querySelector('#short-break');
 		const longBreakButton = document.querySelector('#long-break');
         const volumeControl = document.querySelector('#volume');
@@ -117,7 +119,7 @@
 
 		function resetTimer() {
 			clearInterval(countdown);
-			time = 1800;
+			time = 1200;
 			updateTimer();
 		}
 
@@ -127,6 +129,12 @@
 			updateTimer();
 		});
 
+		sprintButton.addEventListener('click', () => {
+			clearInterval(countdown);
+			time = 1800;
+			updateTimer();
+		});
+		
 		shortBreakButton.addEventListener('click', () => {
 			clearInterval(countdown);
 			time = 300;
